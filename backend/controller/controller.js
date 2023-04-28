@@ -11,8 +11,8 @@ mongoose.connect('mongodb+srv://MarianaMaiko:7DSDQp0fPwOe4gtq@openbankingteros.j
 
 const participantSchema = new mongoose.Schema({
   participantName: String,
-  logo: String
-  // authorizationServerUrl: String,
+  logo: String,
+  configurationUrl: String
 });
 
 const Participant = mongoose.model('Participant', participantSchema);

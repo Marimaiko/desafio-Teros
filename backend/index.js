@@ -7,7 +7,8 @@ async function updateParticipants() {
 
     const participants = response.data.map(item => ({
       participantName: item.RegisteredName,
-      participantLogo: item.AuthorisationServers[0].CustomerFriendlyLogoUri
+      participantLogo: item.AuthorisationServers[0].CustomerFriendlyLogoUri,
+      participantConfigurationUrl: item.AuthorisationServers[0].OpenIDDiscoveryDocument
     }))
     console.log(participants)
     await Participant.deleteMany()
