@@ -23,5 +23,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Banco de dados:
   - MongoDB
 
+======================================================================
 
+### ▶ Para iniciar aplicação:
 
+- Front-end: npm start
+
+- Back-end: npm run dev
