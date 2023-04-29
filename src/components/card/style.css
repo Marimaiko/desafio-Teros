@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  border: solid 1px rgb(3, 3, 73);
+  border-radius: 10px;
+  background-color: aliceblue;
+  box-shadow: 3px 3px 3px rgb(3, 3, 73);
+  padding: 25px;
+  gap: 20px;
+  transition: all 0.10ms;
+  max-width: 95%;
+  margin-left: 35px;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.10);
+  transform: scale(1.10);
+  max-width: 95%;
+  margin-right: 35px;
+}
+
+.logo {
+  display: flex;
+  gap: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

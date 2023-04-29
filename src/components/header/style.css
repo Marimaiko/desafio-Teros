@@ -1,0 +1,25 @@
+header{
+  background-color: #fafafa;
+}
+
+.top {
+  display: flex;
+  padding: 0px 30px;
+  margin:  10px 35px 5px;
+  border-bottom: solid black 1px;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.top h1{
+  font-weight: 300;
+  justify-self: flex-end;
+  margin-top: 90px;
+
+}
+
+.top img { 
+  margin: 25px;
+  width: 150px;
+  height: 150px;
+}

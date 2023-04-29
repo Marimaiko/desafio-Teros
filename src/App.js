@@ -1,54 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './App.css';
 
-function App() {
+import { Header } from './components/header';
+import { Card } from './components/card';
+import { Footer } from './components/footer';
+
+function Participants() {
   const [participants, setParticipants] = useState([])
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      axios.get('/api/participants')
-        .then(response => {
-          setParticipants(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }, 60 * 60 * 1000) 
-
-    axios.get('/api/participants')
-      .then(response => {
-        setParticipants(response.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-
-    return () => clearInterval(intervalId)
+    const getParticipants = async () => {
+      try {
+        const result = await axios.get('http://localhost:3000/api/participants')
+        console.log(result.data)
+        setParticipants(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+      console.log('requisicao done')
+    }; 
+    getParticipants();
   }, [])
 
   return (
-    <div>
-      <h1>Open Banking Participants</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Logo</th>
-            <th>Authorization Server URL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {participants.map(participant => (
-            <tr key={participant.id}>
-              <td>{participant.participant.participantName}</td>
-              <td><img src={participant.participantLogo} alt={participant.participantName} width={100} height={100} /></td>
-              <td><a href={participant.participantConfigurationUrl}>{participant.participantConfigurationUrl}</a></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div class="page-container">
+      <Header/>
+      <main>
+        {participants.map(participant => (
+          <Card
+            logo= {participant.participantLogo}
+            title= {participant.participantName}
+            url= {participant.configurationUrl}
+          />
+        ))}
+        <Card/>
+        <Card/>
+      </main>
+      <Footer/>
     </div>
   )
 }
 
-export default App
+export default Participants

@@ -1,0 +1,13 @@
+footer {
+  margin: 100px 35px 0px 35px;
+  height: 100%; 
+  border-top: solid black 1px;
+}
+
+.Pb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  gap: 10px;
+}

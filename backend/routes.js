@@ -1,16 +1,14 @@
 const express = require('express');
-const routes = express.Router()
-const Participant = require('../controller/controller');
-const app = express()
+const router = express();
+const Participant = require('./controller/model');
 
-routes.get('/participants', (req, res) => Participant.find()
-    .then(result => res.json(result))
-    .catch(error => console.error(error))
-);
+router.get('/participants', async (req, res) => {
+  try {
+    const participants = await Participant.find()
+    res.json(participants)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
-  console.log('Servidor rodando na porta 3000');
-});
-
-module.exports = routes;
+module.exports = router;
